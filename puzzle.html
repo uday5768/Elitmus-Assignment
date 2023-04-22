@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Soft Skills Puzzle</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    .container {
+      max-width: 800px;
+      margin: auto;
+      padding: 20px;
+    }
+    .clue {
+      padding: 10px;
+      border: 1px solid #ccc;
+      margin-bottom: 20px;
+    }
+    .clue h3 {
+      margin-top: 0;
+    }
+    .input-group {
+      margin-bottom: 10px;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+    input[type="text"] {
+      padding: 5px;
+      width: 100%;
+      box-sizing: border-box;
+      border-radius: 3px;
+      border: 1px solid #ccc;
+    }
+    input[type="submit"] {
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: #fff;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    input[type="submit"]:hover {
+      background-color: #3e8e41;
+    }
+    #status {
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Soft Skills Puzzle</h1>
+    <div id="clue1" class="clue">
+      <h3>Clue 1</h3>
+      <p>Here is your first clue. Find the hidden word in the following paragraph:</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+      <div class="input-group">
+        <label for="clue1-input">Hidden Word:</label>
+        <input type="text" id="clue1-input" name="clue1-input">
+      </div>
+      <input type="submit" value="Submit Clue" onclick="checkClue('clue1', 'clue1-input', 'clue2')">
+      <p id="clue1-status"></p>
+    </div>
+    <div id="clue2" class="clue">
+      <h3>Clue 2</h3>
+      <p>Here is your second clue. Solve the following math equation:</p>
+      <p>3 + 5 * 2 - 4 = ?</p>
+      <div class="input-group">
+        <label for="clue2-input">Answer:</label>
+        <input type="text" id="clue2-input" name="clue2-input">
+      </div>
+      <input type="submit" value="Submit Clue" onclick="checkClue('clue2', 'clue2-input', 'clue3')">
+      <p id="clue2-status"></p>
+    </div>
+    <div id="clue3" class="clue">
+      <h3>Clue 3</h3>
+      <p>Here is your third clue. Find the odd one out:</p>
+      <p>apple,
+      banana,
+      kiwi,
+      orange,
+      carrot</p>
+      <div class="input-group">
+      <label for="clue3-input">Odd One Out:</label>
+      <input type="text" id="clue3-input" name="clue3-input">
+      </div>
+      <input type="submit" value="Submit Clue" onclick="checkClue('clue3', 'clue3-input', 'clue4')">
+      <p id="clue3-status"></p>
+      </div>
+      <div id="clue4" class="clue">
+      <h3>Clue 4</h3>
+      <p>Here is your fourth clue. Rearrange the following letters to form a word:</p>
+      <p>l e g o n o o p</p>
+      <div class="input-group">
+      <label for="clue4-input">Word:</label>
+      <input type="text" id="clue4-input" name="clue4-input">
+      </div>
+      <input type="submit" value="Submit Clue" onclick="checkClue('clue4', 'clue4-input', 'clue5')">
+      <p id="clue4-status"></p>
+      </div>
+      <div id="clue5" class="clue">
+      <h3>Clue 5</h3>
+      <p>Here is your final clue. Find the missing number:</p>
+      <p>2, 4, 6, 8, ?, 12, 14, 16, 18</p>
+      <div class="input-group">
+      <label for="clue5-input">Missing Number:</label>
+      <input type="text" id="clue5-input" name="clue5-input">
+      </div>
+      <input type="submit" value="Submit Clue" onclick="checkClue('clue5', 'clue5-input', 'finish')">
+      <p id="clue5-status"></p>
+      </div>
+      <div id="finish">
+        <h3>Congratulations!</h3>
+        <p>You have successfully completed the Soft Skills Puzzle.</p>
+    </div>
+      
+  </div>
+  <script>
+    // Add your JavaScript code here
+    const answers = {
+      "clue1": "minim",
+      "clue2": "10",
+      "clue3": "carrot",
+      "clue4": "lagoon",
+      "clue5": "10"
+    };
+    function checkClue(currentClueId, inputId, nextClueId) {
+  const input = document.getElementById(inputId).value.toLowerCase();
+  const status = document.getElementById(currentClueId + "-status");
+  if (input === answers[currentClueId]) {
+    status.innerHTML = "Correct!";
+    status.classList.remove("error");
+    status.classList.add("success");
+    document.getElementById(currentClueId).style.display = "none";
+    document.getElementById(nextClueId).style.display = "block";
+  } else {
+    status.innerHTML = "Incorrect. Please try again.";
+    status.classList.remove("success");
+    status.classList.add("error");
+  }
+}
+  </script>
+</body>
+</html>

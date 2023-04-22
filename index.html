@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+      body {
+      font-family: Arial, sans-serif;
+    }
+    .container {
+      max-width: 600px;
+      margin: auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .form-group {
+      margin-bottom: 10px;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+    input[type="text"], input[type="email"], input[type="password"] {
+      padding: 5px;
+      width: 100%;
+      box-sizing: border-box;
+      border-radius: 3px;
+      border: 1px solid #ccc;
+    }
+    input[type="submit"] {
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: #fff;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    input[type="submit"]:hover {
+      background-color: #3e8e41;
+    }
+    .error {
+      color: red;
+      font-size: 0.8em;
+      margin-top: 5px;
+    }
+  </style>
+</head>
+  <body>
+  <div class="container">
+    <h1>Registration Form</h1>
+    <form id="myForm" onsubmit="validateForm()" action="puzzle.html">
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        <div id="emailError" class="error"></div>
+      </div>
+      <div class="form-group">
+        <label for="id">ID:</label>
+        <input type="text" id="id" name="id" required>
+        <div id="idError" class="error"></div>
+      </div>
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        <div id="passwordError" class="error"></div>
+      </div>
+      <br>
+      <input type="submit" value="Submit">
+    </form>
+  
+    <script>
+      function validateForm() {
+      let email = document.getElementById("email");
+      let id = document.getElementById("id");
+      let password = document.getElementById("password");
+
+      let emailError = document.getElementById("emailError");
+      let idError = document.getElementById("idError");
+      let passwordError = document.getElementById("passwordError");
+
+      let valid = true;
+
+      // Validate email
+      let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email.value)) {
+        emailError.innerHTML = "Invalid email format";
+        valid = false;
+      } else {
+        emailError.innerHTML = "";
+      }
+
+      // Validate ID
+      if (id.value.length !== 8) {
+        idError.innerHTML = "ID must be exactly 8 characters long";
+        valid = false;
+      } else {
+        idError.innerHTML = "";
+      }
+
+      // Validate password
+      let passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[
+      if (!passwordRegex.test(password.value)) {
+      passwordError.innerHTML = "Password must contain at least one uppercase letter, one lowercase letter, and one digit";
+      valid = false;
+      } else {
+      passwordError.innerHTML = "";
+      }
+       if (valid==true){   
+         document.getElementById("container2").style.display="block"
+       }
+}
+    </script>
+    </body>
+</html>
